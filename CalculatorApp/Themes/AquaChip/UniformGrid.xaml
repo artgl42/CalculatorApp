@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CalculatorApp.Themes.AquaChip">
+
+    <Style TargetType="{x:Type UniformGrid}">
+        <Setter Property="Effect">
+            <Setter.Value>
+                <DropShadowEffect />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

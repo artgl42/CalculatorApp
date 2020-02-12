@@ -1,0 +1,116 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CalculatorApp.Themes.DarkBlue">
+
+    <SolidColorBrush x:Key="BackgroundBrush" Color="Black" />
+    <SolidColorBrush x:Key="ForegroundBrush" Color="LightCyan" />
+    <SolidColorBrush x:Key="SeparatorBorderBrush" Color="LightCyan" />
+    <SolidColorBrush x:Key="SubMenuBorderBrush" Color="LightCyan" />
+
+    <LinearGradientBrush x:Key="IsHighlightedGradient" EndPoint="0.5,1" StartPoint="0.5,0">
+        <GradientStop Color="DeepSkyBlue" Offset="0" />
+        <GradientStop Color="Blue" Offset="1" />
+    </LinearGradientBrush>
+
+    <Style x:Key="{x:Type Menu}" TargetType="{x:Type Menu}">
+        <Setter Property="OverridesDefaultStyle" Value="True" />
+        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border>
+                        <Viewbox HorizontalAlignment="Left" >
+                            <StackPanel IsItemsHost="True" Orientation="Horizontal" />
+                        </Viewbox>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <ControlTemplate x:Key="{x:Static MenuItem.TopLevelHeaderTemplateKey}" TargetType="{x:Type MenuItem}">
+        <Border x:Name="Border">
+            <Grid>
+                <ContentPresenter ContentSource="Header" Margin="20, 5" />
+                <Popup x:Name="Popup" 
+                       IsOpen="{TemplateBinding IsSubmenuOpen}"
+                       Placement="Bottom">
+                    <Border x:Name="SubmenuBorder"
+                            BorderThickness="1"
+                            BorderBrush="{StaticResource SubMenuBorderBrush}">
+                        <StackPanel IsItemsHost="True" />
+                    </Border>
+                </Popup>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsHighlighted" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="{DynamicResource IsHighlightedGradient}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="{x:Static MenuItem.TopLevelItemTemplateKey}" TargetType="{x:Type MenuItem}">
+        <Border x:Name="Border">
+            <Grid>
+                <ContentPresenter Margin="6, 3" ContentSource="Header" />
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsHighlighted" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="{DynamicResource IsHighlightedGradient}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="{x:Static MenuItem.SubmenuHeaderTemplateKey}" TargetType="{x:Type MenuItem}">
+        <Border x:Name="Border">
+            <Grid>
+                <ContentPresenter ContentSource="Header" VerticalAlignment="Center" Margin="15, 5, 0, 5" />
+                <Path Data="M 0,2 L 10,10 L 0,18 Z" Fill="White" Margin="80, 5, 5, 5"/>
+                <Popup x:Name="Popup"
+                       Placement="Right"
+                       HorizontalOffset="-1"
+                       IsOpen="{TemplateBinding IsSubmenuOpen}">
+                    <Border x:Name="SubmenuBorder"
+                            BorderThickness="1"
+                            BorderBrush="{StaticResource SubMenuBorderBrush}">
+                        <StackPanel IsItemsHost="True" />
+                    </Border>
+                </Popup>
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsHighlighted" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="{DynamicResource IsHighlightedGradient}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <ControlTemplate x:Key="{x:Static MenuItem.SubmenuItemTemplateKey}" TargetType="{x:Type MenuItem}">
+        <Border x:Name="Border" BorderThickness="1">
+            <Grid>
+                <ContentPresenter x:Name="HeaderHost" Margin="15, 5" ContentSource="Header" />
+            </Grid>
+        </Border>
+        <ControlTemplate.Triggers>
+            <Trigger Property="IsHighlighted" Value="true">
+                <Setter TargetName="Border" Property="Background" Value="{DynamicResource IsHighlightedGradient}" />
+            </Trigger>
+        </ControlTemplate.Triggers>
+    </ControlTemplate>
+
+    <Style x:Key="{x:Static MenuItem.SeparatorStyleKey}" TargetType="{x:Type Separator}">
+        <Setter Property="Height" Value="1" />
+        <Setter Property="Margin" Value="10, 5" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border BorderThickness="1" 
+                            BorderBrush="{StaticResource SeparatorBorderBrush}" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+</ResourceDictionary>

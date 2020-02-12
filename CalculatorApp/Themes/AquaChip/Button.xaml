@@ -1,0 +1,90 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CalculatorApp.Themes.AquaChip">
+
+    <SolidColorBrush x:Key="DefaultBorderBrush" Color="Aqua" />
+    <SolidColorBrush x:Key="DefaultForegroundBrush" Color="Aqua" />
+    <SolidColorBrush x:Key="MouseOverBorderBrush" Color="Lime" />
+    <SolidColorBrush x:Key="MouseOverForegroundBrush" Color="Lime" />
+    <SolidColorBrush x:Key="MousePressedBorderBrush" Color="OrangeRed" />
+    <SolidColorBrush x:Key="MousePressedForegroundBrush" Color="OrangeRed" />
+    <Color x:Key="MouseOverBorderDropShadowEffectColor">DarkGreen</Color>
+    <Color x:Key="MousePressedBorderDropShadowEffectColorr">DarkRed</Color>
+
+    <LinearGradientBrush x:Key="DefaultBackgroundGradient">
+        <GradientStop Color="DeepSkyBlue" Offset="0" />
+        <GradientStop Color="Transparent" Offset="1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="MouseOverBackgroundGradient">
+        <GradientStop Color="LimeGreen" Offset="0" />
+        <GradientStop Color="Transparent" Offset="1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="MousePressedBackgroundGradient">
+        <GradientStop Color="Orange" Offset="0" />
+        <GradientStop Color="Transparent" Offset="1" />
+    </LinearGradientBrush>
+
+    <Style TargetType="{x:Type Button}">
+        <Setter Property="BorderBrush" Value="{StaticResource DefaultBorderBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource DefaultForegroundBrush}" />
+        <Setter Property="Background" Value="{StaticResource DefaultBackgroundGradient}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <Viewbox Stretch="Fill">
+                        <Border x:Name="ButtonBorder"    
+                                Margin="1"
+                                Padding="15, 0"
+                                CornerRadius="2"
+                                BorderThickness="1"
+                                Cursor="Hand"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                Background="{TemplateBinding Background}">
+                            <ContentPresenter Content="{TemplateBinding Content}" />
+                        </Border>
+                    </Viewbox>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="true">
+                            <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="{StaticResource MouseOverBorderBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource MouseOverForegroundBrush}" />
+                            <Setter Property="Background" Value="{StaticResource MouseOverBackgroundGradient}" />
+                            <Setter TargetName="ButtonBorder" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" BlurRadius="5" Color="{StaticResource MouseOverBorderDropShadowEffectColor}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="true">
+                            <Setter TargetName="ButtonBorder" Property="BorderBrush" Value="{StaticResource MousePressedBorderBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource MousePressedForegroundBrush}" />
+                            <Setter Property="Background" Value="{StaticResource MousePressedBackgroundGradient}" />
+                            <Setter TargetName="ButtonBorder" Property="Effect">
+                                <Setter.Value>
+                                    <DropShadowEffect ShadowDepth="0" BlurRadius="10" Color="{StaticResource MousePressedBorderDropShadowEffectColorr}"/>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <EventTrigger.Actions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation Storyboard.TargetProperty="(Button.FontSize)" 
+                                                         Duration="0:0:0.25" 
+                                                         From="12" To="24" AutoReverse="True">
+                                            <DoubleAnimation.EasingFunction>
+                                                <ExponentialEase EasingMode="EaseOut" Exponent="2"/>
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger.Actions>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+</ResourceDictionary>

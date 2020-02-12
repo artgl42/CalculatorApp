@@ -1,0 +1,14 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="pack://application:,,,/Themes/DarkBlue/Window.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Themes/DarkBlue/Menu.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Themes/DarkBlue/ContextMenu.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Themes/DarkBlue/DockPanel.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Themes/DarkBlue/TextBlock.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Themes/DarkBlue/UniformGrid.xaml" />
+        <ResourceDictionary Source="pack://application:,,,/Themes/DarkBlue/Button.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+    
+</ResourceDictionary>

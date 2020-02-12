@@ -1,0 +1,75 @@
+﻿<Window x:Class="CalculatorApp.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+    mc:Ignorable="d" 
+    Title="Калькулятор" 
+    WindowStartupLocation="CenterScreen" 
+    Style="{DynamicResource WindowStyle}">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Themes/AquaChip/AquaChip.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*" />
+            <RowDefinition Height="0.5*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0">
+            <MenuItem Header="Menu">
+                <MenuItem Header="Style">
+                    <MenuItem Header="Default" Command="{Binding MenuItemClickCommand}" CommandParameter="Default" />
+                    <MenuItem Header="DarkBlue" Command="{Binding MenuItemClickCommand}" CommandParameter="DarkBlue" />
+                    <MenuItem Header="AquaChip" Command="{Binding MenuItemClickCommand}" CommandParameter="AquaChip" />
+                </MenuItem>
+                <Separator />
+                <MenuItem Header="Exit" Command="{Binding MenuItemClickCommand}" CommandParameter="Exit" />
+            </MenuItem>
+            <MenuItem Header="?" Command="{Binding MenuItemClickCommand}" CommandParameter="?" />
+        </Menu>
+
+        <DockPanel Grid.Row="1" Margin="5, 10, 5, 5">
+            <Viewbox HorizontalAlignment="Right">
+                <TextBlock x:Name="textBlock" Text="{Binding DisplayText, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Padding="1"/>
+            </Viewbox>
+            <DockPanel.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Copy" Command="{Binding CopyCommand}" />
+                    <MenuItem Header="Paste" Command="{Binding PasteCommand}" />
+                </ContextMenu>
+            </DockPanel.ContextMenu>
+        </DockPanel>
+
+        <UniformGrid Grid.Row="2" Rows="4" Columns="5" Margin="5, 5, 5, 10">
+            <Button Content="1" Command="{Binding ButtonClickCommand}" CommandParameter="1" />
+            <Button Content="2" Command="{Binding ButtonClickCommand}" CommandParameter="2" />
+            <Button Content="3" Command="{Binding ButtonClickCommand}" CommandParameter="3" />
+            <Button Content="+" Command="{Binding ButtonClickCommand}" CommandParameter="+" />
+            <Button Content="C" Command="{Binding ButtonClickCommand}" CommandParameter="C" />
+            <Button Content="4" Command="{Binding ButtonClickCommand}" CommandParameter="4" />
+            <Button Content="5" Command="{Binding ButtonClickCommand}" CommandParameter="5" />
+            <Button Content="6" Command="{Binding ButtonClickCommand}" CommandParameter="6" />
+            <Button Content="-" Command="{Binding ButtonClickCommand}" CommandParameter="-" />
+            <Button Content="^" Command="{Binding ButtonClickCommand}" CommandParameter="^" />
+            <Button Content="7" Command="{Binding ButtonClickCommand}" CommandParameter="7" />
+            <Button Content="8" Command="{Binding ButtonClickCommand}" CommandParameter="8" />
+            <Button Content="9" Command="{Binding ButtonClickCommand}" CommandParameter="9" />
+            <Button Content="*" Command="{Binding ButtonClickCommand}" CommandParameter="*" />
+            <Button Content="Sqrt" Command="{Binding ButtonClickCommand}" CommandParameter="Sqrt" />
+            <Button Content="1/X" Command="{Binding ButtonClickCommand}" CommandParameter="1/X" />
+            <Button Content="0" Command="{Binding ButtonClickCommand}" CommandParameter="0" />
+            <Button Content="," Command="{Binding ButtonClickCommand}" CommandParameter="," />
+            <Button Content="/" Command="{Binding ButtonClickCommand}" CommandParameter="/" />
+            <Button Content="=" Command="{Binding ButtonClickCommand}" CommandParameter="=" />
+        </UniformGrid>
+    </Grid>
+
+</Window>
